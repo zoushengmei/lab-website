@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐冻症：一场无声的冰冻</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f0f0, #e3e4e8);
+            color: #333;
+            line-height: 1.7;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header styles */
+        header {
+            background: #2e3a59;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            font-size: 2.8em;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main content section */
+        section {
+            padding: 40px 10%;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            max-width: 1200px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Heading styles */
+        h2 {
+            color: #2e3a59;
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Paragraph styles */
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .highlight {
+            background-color: #fff7e6;
+            padding: 8px;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* Button styles */
+        .button, .appointment-link {
+            display: inline-block;
+            background-color: #ff7f50;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.3em;
+            margin-top: 30px;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:hover, .appointment-link:hover {
+            background-color: #e76f37;
+            transform: translateY(-5px);
+        }
+
+        /* Intro section */
+        .intro {
+            font-size: 1.3em;
+            color: #444;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Quote styling */
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 5px solid #2e3a59;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-size: 1.3em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Image styles */
+        .content-image img {
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Symptom and treatment sections */
+        .symptoms, .treatment {
+            background-color: #eef2f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .symptoms h3, .treatment h3 {
+            font-size: 1.8em;
+            color: #2e3a59;
+            margin-bottom: 15px;
+        }
+
+        .symptoms ul, .treatment ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .symptoms li, .treatment li {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .symptoms li::before, .treatment li::before {
+            content: "•";
+            color: #ff7f50;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #033161;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 1.1em;
+            margin-top: 50px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            section {
+                padding: 30px 5%;
+            }
+
+            header {
+                font-size: 2.2em;
+                padding: 60px 20px;
+            }
+
+            .button, .appointment-link {
+                font-size: 1.1em;
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 20px 5%;
+            }
+
+            header {
+                font-size: 1.8em;
+                padding: 40px 20px;
+            }
+
+            .quote {
+                font-size: 1.2em;
+            }
+
+            .button, .appointment-link {
+                font-size: 1.1em;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        渐冻症：一场无声的冰冻
+    </header>
+
+    <section>
+        <p class="intro">
+            24岁的小薇（化名）是一名非常有天赋的艺术生，年纪轻轻就屡获画作大奖，未来前景一片光明。然而，命运在不经意间悄然改变了她的生活轨迹……<br>
+            某个清晨，她突然发现右手梳头时有些费力，伴有轻微的肌肉跳动，起初并未在意，只认为是疲劳所致，但随着时间的推移，她的情况急转直下，连举起画板都变得有些吃力…
+        </p>
+
+        <h2>渐冻症简介</h2>
+        <p>
+            渐冻症，学名肌萎缩侧索硬化症（ALS），是一种失控破坏大脑和脊髓中负责控制肌肉的运动神经元的疾病。最初可能表现为轻微的症状，如单侧肢体写字无力或拧毛巾困难等，随着病情进展，患者逐渐失去四肢的肌肉力量，最终因呼吸衰竭而离世。患者的思维、记忆和感官通常保持清晰，但只能目睹自己身体逐渐“被冰冻”。
+        </p>
+        
+        <div class="content-image">
+            <img src="images/640 (1).webp" alt="渐冻症患者" />
+        </div>
+
+        <div class="quote">
+            "疾病能困住我的身体，但困不住仰望星空的渴望。" — 小薇
+        </div>
+
+        <div class="symptoms">
+            <h3>渐冻症的早期症状</h3>
+            <ul>
+                <li>不明原因的肌肉无力</li>
+                <li>不明原因的肌肉萎缩</li>
+                <li>频繁的肌肉跳动，休息后无缓解</li>
+                <li>讲话不清、吞咽困难</li>
+            </ul>
+        </div>
+
+        <h2>如何突破困境？</h2>
+        <p>
+            尽管渐冻症目前无法根治，但早期通过药物和康复治疗可改善患者的生活质量，延长生存期。利鲁唑和依达拉奉是常用的治疗药物，能够减缓运动功能衰退。而脑机接口和基因治疗则为未来的治疗提供了新的希望。
+        </p>
+        
+        <div class="content-image">
+            <img src="images/640.webp" alt="治疗探索" />
+        </div>
+
+        <div class="treatment">
+            <h3>治疗探索与希望</h3>
+            <ul>
+                <li>利鲁唑：一种减缓运动功能衰退的药物。</li>
+                <li>依达拉奉：常用于治疗渐冻症的药物。</li>
+                <li>基因治疗：针对SOD1基因突变的治疗，精准干预病因。</li>
+                <li>脑机接口：通过读取大脑信号，帮助患者与外部设备进行沟通。</li>
+            </ul>
+        </div>
+
+        <a href="https://www.z2hospital.com" class="appointment-link">点击预约挂号</a>
+    </section>
+
+    <footer>
+        <p>关注浙江大学医学院附属第二医院，了解更多渐冻症治疗资讯。</p>
+    </footer>
+</body>
+</html>

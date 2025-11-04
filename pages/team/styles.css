@@ -1,0 +1,649 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #e3f2fd;
+    overflow-x: hidden;
+    padding-top: 7rem;
+    font-size: 16px;
+}
+
+/* Slide Sections */
+.slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #005b99 0%, #007acc 100%);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(135deg, #0066b2 0%, #0088cc 100%);
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-logo img {
+    max-width: 500px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.header-logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, #004c80 0%, #003f66 100%);
+    padding: 0.5rem 0;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 12px 0;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #a8d4ff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+nav ul li a.active {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    border-radius: 0;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+nav ul li a:hover {
+    color: #e6f0ff;
+    transform: translateY(-1px);
+}
+
+/* Hamburger Menu for Mobile */
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Flex Container */
+.flex-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Carousel */
+.carousel {
+    flex: 2;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+    display: none;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.carousel-slide a {
+    display: block;
+    text-decoration: none;
+}
+
+.carousel-slide::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-slide:hover::after {
+    opacity: 1;
+}
+
+.carousel-dots {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #007acc;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-control.prev {
+    left: 1rem;
+}
+
+.carousel-control.next {
+    right: 1rem;
+}
+
+/* News Feed */
+.news-feed {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-feed h3 {
+    font-size: 1.6rem;
+    color: #007acc;
+    margin-bottom: 1rem;
+}
+
+.news-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-item .date {
+    font-size: 0.9rem;
+    color: #666;
+    min-width: 100px;
+}
+
+.news-item .content {
+    font-size: 1rem;
+    color: #333;
+}
+
+.news-feed a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.news-feed a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer-section {
+    font: 14px 'Helvetica Neue', Helvetica, 'PingFang SC', '微软雅黑', Tahoma, Arial, sans-serif;
+    -webkit-text-size-adjust: none;
+    box-sizing: border-box;
+    line-height: 1.75;
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: #033161;
+    background-image: url(../img/footer-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.footer {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 3rem;
+}
+
+.f-logo {
+    text-align: center;
+}
+
+.f-logo img {
+    max-width: 500px;
+}
+
+.f-qr {
+    flex: 1;
+    text-align: center;
+}
+
+.f-qr dl {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    gap: 30px; /* 图片和文字之间的间距 */
+    flex-wrap: nowrap; /* 默认不换行 */
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1); /* 轻微透明背景，增加层次感 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 与 carousel 一致的阴影 */
+    transition: transform 0.3s ease; /* 平滑过渡 */
+}
+
+.f-qr dl:hover {
+    transform: translateY(-5px); /* 悬停时轻微上移 */
+}
+
+.f-qr dt {
+    margin: 0;
+    padding: 0;
+}
+
+.f-qr dt img {
+    width: 130px; /* 统一图片大小 */
+    height: 140px;
+    border-radius: 8px; /* 圆角 */
+    border: 2px solid #a8d4ff; /* 与导航下划线颜色一致 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.f-qr dt img:hover {
+    transform: scale(1.1); /* 悬停时放大 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* 增强阴影 */
+}
+
+.f-qr dd {
+    font-size: 14px;
+    color: #e6f0ff; /* 与导航悬停颜色一致 */
+    margin-top: 0.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.f-qr dd:hover {
+    color: #a8d4ff; /* 悬停时颜色变化 */
+}
+
+.f-address {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.f-address i {
+    font-size: 1.2rem;
+}
+
+.f-share {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.f-share span {
+    font-size: 16px;
+}
+
+.a2a_kit a {
+    display: inline-block;
+    color: white !important;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.a2a_kit a:hover {
+    color: #a8d4ff !important;
+}
+
+.a2a_svg {
+    border-radius: 4px;
+}
+
+footer {
+    background-color: #222;
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #ccc;
+    font-size: 14px;
+    width: 100%;
+}
+
+footer a {
+    color: #a8d4ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 10rem;
+    }
+
+    .slide {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+
+    .header-top {
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    .header-logo img {
+        max-width: 80px;
+    }
+
+    nav {
+        top: 60px;
+        padding: 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        background: #004c80;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    nav ul.active {
+        max-height: 300px;
+    }
+
+    nav ul li {
+        flex: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul li a {
+        padding: 15px 0;
+        font-size: 1.2rem;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .carousel, .news-feed {
+        flex: none;
+    }
+
+    .carousel-slide img {
+        height: 300px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .f-qr, .f-address, .f-share {
+        flex: none;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .f-address {
+        text-align: center;
+    }
+
+    .f-share {
+        justify-content: center;
+    }
+
+    .f-logo img {
+        max-width: 300px;
+    }
+
+    .f-qr dl {
+        flex-wrap: wrap; /* 小屏幕允许换行 */
+        gap: 20px;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .f-qr dt img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .f-qr dd {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-slide img {
+        height: 200px;
+    }
+
+    .news-item {
+        flex-direction: column;
+    }
+
+    .news-item .date {
+        min-width: auto;
+    }
+
+    .f-logo img {
+        max-width: 200px;
+    }
+
+    .f-qr dl {
+        gap: 15px;
+    }
+
+    .f-qr dt img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .f-qr dd {
+        font-size: 10px;
+    }
+
+    .f-address {
+        font-size: 12px;
+    }
+
+    .a2a_kit a {
+        font-size: 1.2rem;
+    }
+}
+.team-member {
+    margin-top: 2em; /* Space above the team member section */
+    text-align: center; /* Center the content */
+}
+
+.team-member h3 {
+    font-size: 1.5em; /* Adjust heading size */
+    margin-bottom: 1em; /* Space below the heading */
+}
+
+.member-profile {
+    display: inline-block; /* Center the profile block */
+    text-align: center; /* Center text and image */
+}
+
+.member-image {
+    width: 150px; /* Adjust image size as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: Make the image circular */
+    margin-bottom: 0.5em; /* Space between image and text */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.member-image:hover {
+    transform: scale(1.1); /* Slight zoom on hover for interactivity */
+}
